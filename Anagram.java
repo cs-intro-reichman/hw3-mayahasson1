@@ -34,17 +34,19 @@ public class Anagram {
 		{
 			return false;
 		}
+		char[] chars2 = str2.toCharArray(); 
 		for(int i=0;i<str1.length();i++)
 		{
 			char c=str1.charAt(i);
 			boolean found=false;
 			for(int j=0;j<str2.length();j++)
 			{
-				if(c==str2.charAt(j))
+
+				if (c == chars2[j]) 
 				{
-					str2=str2.substring(0, j) + str2.substring(j + 1);
-					found=true;
-					break;
+                chars2[j]='\0';
+                found = true;
+                break;
 				}
 			}
 			if(!found)
