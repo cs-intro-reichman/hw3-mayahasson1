@@ -63,7 +63,7 @@ public class Anagram {
 		int i=0;
 		while(i<str.length())
 		{
-			if(Character.isLetter(str.charAt(i)))
+			if(Character.isLetter(str.charAt(i))|| str.charAt(i) == ' ')
 			{
 				if(Character.isUpperCase(str.charAt(i)))
 				{
