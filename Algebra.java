@@ -1,11 +1,10 @@
-// Implements algebraic operations and the square root function without using 
-// the Java operations a + b, a - b, a * b, a / b, a % b, and without calling 
-// Math.sqrt. All the functions in this class operate on int values and
-// return int values.
+
 
 public class Algebra {
 	public static void main(String args[]) {
-	    // Tests some of the operations
+		
+
+	   
 	    System.out.println(plus(2,3));   // 2 + 3
 	    System.out.println(minus(7,2));  // 7 - 2
    		System.out.println(minus(2,7));  // 2 - 7
@@ -23,45 +22,163 @@ public class Algebra {
    		System.out.println(sqrt(76123));
 	}  
 
-	// Returns x1 + x2
-	public static int plus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+	public static int plus(int x1, int x2)
+		{
+		int result =x1;
+		if(x2>=0)
+		{
+				while(x2>0)
+				{
+					result++;
+					x2--;
+				}
+		}
+		else
+		{
+			while(x2<0)
+				{
+				result--;
+				x2++;
+				}
+		}
+		return result;
 	}
 
-	// Returns x1 - x2
-	public static int minus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+	
+	public static int minus(int x1, int x2)
+	{
+		int result =x1;
+		if(x2>=0)
+		{
+				while(x2>0)
+				{
+					result--;
+					x2--;
+				}
+		}
+		else
+		{
+			while(x2<0)
+				{
+				result++;
+				x2++;
+				}
+		}
+		return result;
 	}
-
-	// Returns x1 * x2
 	public static int times(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
-	}
+    int result = 0;
+    boolean negative = false;
+    if (x1<0) 
+	{
+        x1 = minus(0,x1);
+        negative = !negative;
+    }
+    if (x2<0) 
+	{
+        x2 =minus(0,x2);
+        negative = !negative;
+    }
 
-	// Returns x^n (for n >= 0)
+    while (x2>0) 
+	{
+        result=plus(result,x1);
+        x2--;
+    }
+
+    if (negative) 
+	{
+        result= minus(0,result);
+    }
+
+    return result;
+}
+
+
 	public static int pow(int x, int n) {
-		// Replace the following statement with your code
-		return 0;
+		int result=1;
+		if (n<0)
+		 {
+        return 0; 
+    	}
+		if(n==0)
+		{
+			return 1;
+		}
+		while(n>0) 
+			{
+				result=times(result,x);
+				n--;
+			}
+		return result;
 	}
 
-	// Returns the integer part of x1 / x2 
+	
 	public static int div(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
-	}
+    if (x2==0)
+	 	{
+        throw new ArithmeticException("Division by zero");
+    	}
+    int count = 0;
+	boolean negative = false;
+	if (x1 < 0) 
+	{
+        x1=minus(0,x1);
+        negative = !negative;
+    }
+    if (x2 < 0)
+	{
+        x2=minus(0,x2);
+        negative = !negative;
+    }
+    while (x1>= x2) 
+		{
+        x1= minus(x1,x2);
+        count++;
+    	}
+		if(negative) 
+		{
+        count=minus(0,count);
+    	}
+    return count;
+}
 
-	// Returns x1 % x2
+	
 	public static int mod(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		if(x2==0)
+		{
+			throw new ArithmeticException("Modulo by zero");
+		}
+		if(x1==0)
+		{
+			return 0;
+		}
+		if(x1<x2)
+		{
+			return x1;
+		}
+		else
+		{
+			while(x1>=x2)
+			{
+				x1=minus(x1,x2);
+			}
+		}
+		return x1;
 	}	
 
-	// Returns the integer part of sqrt(x) 
+	
 	public static int sqrt(int x) {
-		// Replace the following statement with your code
-		return 0;
+		int i=1;
+		if (x<0) 
+		{
+        throw new ArithmeticException("Negative input");
+    	}
+		while(times(i,i)<=x)
+		{
+			i++;
+		}
+		i--;
+		return i;
 	}	  	  
 }
